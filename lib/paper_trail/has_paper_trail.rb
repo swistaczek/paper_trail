@@ -198,7 +198,17 @@ module PaperTrail
       end
 
       def item_before_change
+        # Disable Amoeba class duplication
+        if defined?(::Amoeba)
+          amoeba = self.class.amoeba.enabled
+          self.class.amoeba { disable } 
+        end
+
         previous = self.dup
+
+        # ReEnable Amoeba if previously enabled
+        self.class.amoeba { enable } if amoeba 
+
         # `dup` clears timestamps so we add them back.
         all_timestamp_attributes.each do |column|
           previous[column] = send(column) if respond_to?(column) && !send(column).nil?
