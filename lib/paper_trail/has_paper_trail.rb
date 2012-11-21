@@ -204,7 +204,7 @@ module PaperTrail
           self.class.amoeba { disable } 
         end
 
-        previous = self.dup
+        previous = self.clone #dup
 
         # ReEnable Amoeba if previously enabled
         self.class.amoeba { enable } if amoeba 

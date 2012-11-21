@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
@@ -13,3 +14,6 @@ end
 
 desc 'Default: run unit tests.'
 task :default => :test
+=======
+require "bundler/gem_tasks"
+>>>>>>> adcf423075c29aaa4a1f100f8ea041143e21beb6
